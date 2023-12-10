@@ -28,15 +28,19 @@ class ActivationLayer(Layer):
 
 
 def tanh(x):
+    print("tanh", np.tanh(x))
     return np.tanh(x)
 
 
 def relu(x):
-    print(np.maximum(0, x))
-    return np.maximum(0, x)
-def relu_prime(x):
-    return 0 if np.maximum(0, x) is 0 else 1
+    return np.maximum(x, 0)
 
+
+def relu_prime(x):
+    # x[x > 0] = 1
+    # # return 0 if np.maximum(x, 0) == 0 else 1
+    # return np.maximum(0, x)
+    return np.where(x > 0, 1.0, 0.0)
 
 
 def tanh_prime(x):
