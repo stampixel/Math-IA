@@ -32,7 +32,11 @@ def tanh(x):
 
 
 def relu(x):
+    print(np.maximum(0, x))
     return np.maximum(0, x)
+def relu_prime(x):
+    return 0 if np.maximum(0, x) is 0 else 1
+
 
 
 def tanh_prime(x):
