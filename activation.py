@@ -28,7 +28,6 @@ class ActivationLayer(Layer):
 
 
 def tanh(x):
-    print("tanh", np.tanh(x))
     return np.tanh(x)
 
 

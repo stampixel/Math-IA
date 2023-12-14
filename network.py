@@ -47,5 +47,5 @@ class Network:
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
             # calculate averasge error on all samples
-            error /= samples
+            err /= samples
             print('epoch %d/%d   error=%f' % (i + 1, epochs, err))
