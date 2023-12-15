@@ -9,7 +9,10 @@ class FCLayer(Layer):
     def __init__(self, input_size, output_size):
         super().__init__()
         self.weights = np.random.rand(input_size, output_size) - 0.5
+        print(f"weight: {self.weights}")
         self.bias = np.random.rand(1, output_size) - 0.5
+        print(f"bias: {self.bias}")
+
 
     # return output for a given input
     def forward_propagation(self, input_data):
