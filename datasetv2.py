@@ -1,3 +1,5 @@
+# File for another dataset, don't use
+
 import numpy as np
 
 from network import Network

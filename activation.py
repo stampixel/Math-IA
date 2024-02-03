@@ -15,7 +15,8 @@ class ActivationLayer(Layer):
         """
         self.input = input_data
         self.output = self.activation(self.input)
-        return self.output
+        return np.array([[round(num, 3) for num in self.output[i]] for i in range(len(self.output))])
+        # return self.output
 
     def backward_propagation(self, output_error, learning_rate):
         """
@@ -24,11 +25,17 @@ class ActivationLayer(Layer):
         :param learning_rate:
         :return:
         """
+        # print(f"derivative of cost function{self.activation_prime(self.input) * output_error}")
         return self.activation_prime(self.input) * output_error
 
 
+# Activation functions
 def tanh(x):
     return np.tanh(x)
+
+
+def tanh_prime(x):
+    return 1 - np.tanh(x) ** 2
 
 
 def relu(x):
@@ -40,7 +47,3 @@ def relu_prime(x):
     # # return 0 if np.maximum(x, 0) == 0 else 1
     # return np.maximum(0, x)
     return np.where(x > 0, 1.0, 0.0)
-
-
-def tanh_prime(x):
-    return 1 - np.tanh(x) ** 2

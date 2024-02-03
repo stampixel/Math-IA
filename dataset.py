@@ -8,7 +8,7 @@ from mse_loss import mse, mse_prime
 
 import pandas as pd
 
-df = pd.read_csv('data.csv')
+df = pd.read_csv('data/data.csv')
 
 x_train = []
 y_train = []
@@ -37,16 +37,16 @@ print(y_train)
 
 # network
 net = Network()
-net.add(FCLayer(2, 4))
-net.add(ActivationLayer(tanh, tanh_prime))
-net.add(FCLayer(4, 4))
-net.add(ActivationLayer(tanh, tanh_prime))
-net.add(FCLayer(4, 3))
-net.add(ActivationLayer(tanh, tanh_prime))
+# net.add(FCLayer(2, 4))
+# net.add(ActivationLayer(tanh, tanh_prime))
+# net.add(FCLayer(4, 4))
+# net.add(ActivationLayer(tanh, tanh_prime))
+# net.add(FCLayer(4, 3))
+# net.add(ActivationLayer(tanh, tanh_prime))
 
 # train
 net.use(mse, mse_prime)
-net.fit(x_train, y_train, epochs=1000, learning_rate=0.1)
+net.fit(x_train, y_train, epochs=100, learning_rate=0.1)
 
 # test
 out = net.predict(x_train)

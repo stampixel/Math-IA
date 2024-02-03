@@ -1,4 +1,5 @@
-import numpy as np
+# Transforming qualitative data to quantitative data
+
 import pandas as pd
 
 df = pd.read_csv('cell_data.csv')

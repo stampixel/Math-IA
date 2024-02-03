@@ -1,6 +1,11 @@
+from activation import ActivationLayer, tanh, tanh_prime
+from main_layer import FCLayer
+
+
 class Network:
     def __init__(self):
-        self.layers = []
+        self.layers = [FCLayer(2, 4), ActivationLayer(tanh, tanh_prime), FCLayer(4, 4),
+                       ActivationLayer(tanh, tanh_prime), FCLayer(4, 3), ActivationLayer(tanh, tanh_prime)]
         self.loss = None
         self.loss_prime = None
 
@@ -39,13 +44,15 @@ class Network:
                 output = x_train[j]
                 for layer in self.layers:
                     output = layer.forward_propagation(output)
+                print(output)
                 # compute loss
                 err += self.loss(y_train[j], output)
+                print(err)
 
                 # backward propagation
                 error = self.loss_prime(y_train[j], output)
                 for layer in reversed(self.layers):
                     error = layer.backward_propagation(error, learning_rate)
-            # calculate averasge error on all samples
+            # Averaging error for all samples
             err /= samples
             print('epoch %d/%d   error=%f' % (i + 1, epochs, err))
