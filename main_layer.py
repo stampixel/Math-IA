@@ -9,13 +9,17 @@ class FCLayer(Layer):
     def __init__(self, input_size, output_size, weight, bias):
         super().__init__()
 
-        if weights
-        self.weights = np.random.rand(input_size, output_size) - 0.5
-        self.weights = np.array([[round(num, 3) for num in self.weights[i]] for i in range(len(self.weights))])
-        print(f"weight: {self.weights}")
-
-        self.bias = np.random.rand(1, output_size) - 0.5
-        self.bias = np.array([[round(num, 3) for num in self.bias[i]] for i in range(len(self.bias))])
+        if weight.size == 0:
+            self.weights = np.random.rand(input_size, output_size) - 0.5
+            self.weights = np.array([[round(num, 3) for num in self.weights[i]] for i in range(len(self.weights))])
+        else:
+            self.weights = weight
+        # print(f"weight: {self.weights}")
+        if bias.size == -0:
+            self.bias = np.random.rand(1, output_size) - 0.5
+            self.bias = np.array([[round(num, 3) for num in self.bias[i]] for i in range(len(self.bias))])
+        else:
+            self.bias = bias
         print(f"bias: {self.bias}")
 
     # return output for a given input
@@ -28,8 +32,13 @@ class FCLayer(Layer):
         return self.output
 
     def backward_propagation(self, output_error, learning_rate):
+        print("neuron layer")
+        print(f"output_error: {output_error} weights.T: {self.weights.T}")
         input_error = np.dot(output_error, self.weights.T)
+        # print(input_error)
         weights_error = np.dot(self.input.T, output_error)
+        print(f"sel.input.t: {self.input.T}")
+        print(weights_error)
 
         # update parameters
         self.weights -= learning_rate * weights_error
