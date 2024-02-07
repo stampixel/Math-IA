@@ -26,12 +26,13 @@ class ActivationLayer(Layer):
         :return:
         """
         # print(f"derivative of cost function{self.activation_prime(self.input) * output_error}")
-        print("tanh layer")
+        # print("tanh layer")
         return self.activation_prime(self.input) * output_error
 
 
 # Activation functions
 def tanh(x):
+    print("Tamh")
     return np.tanh(x)
 
 

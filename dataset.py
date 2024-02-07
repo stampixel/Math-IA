@@ -53,12 +53,17 @@ net.add(ActivationLayer(tanh, tanh_prime))
 
 # train
 net.use(mse, mse_prime)
-net.fit(x_train, y_train, epochs=1, learning_rate=0.1)
+net.fit(x_train, y_train, epochs=50, learning_rate=0.1)
 
 # test
-out = net.predict(x_train)
-print(out)
+# out = net.predict(x_train)
+# print(out)
+print(net.layers)
 
 # print(net.predict(np.array([[[6.698483991405154, 6.4584774905415765],
 #                              [6.725410456311336, 6.498399029655705],
 #                              [9.849761950374077, 11.128270344485388]]])))
+
+print(net.predict(np.array([[[10.2321, 12.1673],
+                             [6.7549, 6.4894],
+                             [1.7231, 3.1863],]])))

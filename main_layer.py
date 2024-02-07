@@ -20,7 +20,7 @@ class FCLayer(Layer):
             self.bias = np.array([[round(num, 3) for num in self.bias[i]] for i in range(len(self.bias))])
         else:
             self.bias = bias
-        print(f"bias: {self.bias}")
+        # print(f"bias: {self.bias}")
 
     # return output for a given input
     def forward_propagation(self, input_data):
@@ -29,19 +29,22 @@ class FCLayer(Layer):
 
         self.input = input_data
         self.output = np.dot(self.input, self.weights) + self.bias
+
+        print(self.output)
         return self.output
 
     def backward_propagation(self, output_error, learning_rate):
-        print("neuron layer")
-        print(f"output_error: {output_error} weights.T: {self.weights.T}")
+        # print("neuron layer")
+        # print(f"output_error: {output_error} weights.T: {self.weights.T}")
         input_error = np.dot(output_error, self.weights.T)
-        # print(input_error)
         weights_error = np.dot(self.input.T, output_error)
-        print(f"sel.input.t: {self.input.T}")
-        print(weights_error)
+        # print(f"sel.input.t: {self.input.T}")
+        # print(weights_error)
 
         # update parameters
         self.weights -= learning_rate * weights_error
         self.bias -= learning_rate * output_error
+
+        print(f"self.weights: {self.weights} self.bias: {self.bias}")
 
         return input_error
