@@ -1,7 +1,12 @@
+"""
+This file contains our cost function, which is the mean squared error math equation.
+
+Handles MSE calculations as well as calculating the derivative of the cost function.
+"""
+
 import numpy as np
 
 
-# loss function and its derivative
 def mse(y_true, y_pred):
     """
     true value vs predicted value

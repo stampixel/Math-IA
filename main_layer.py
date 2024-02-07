@@ -4,8 +4,13 @@ import numpy as np
 
 # inherit from base class Layer
 class FCLayer(Layer):
-    # input_size = number of input neurons
-    # output_size = number of output neurons
+    """
+    FC stands for fully connected, in this case each neuron of the previous layer connects to each of the neuron of the  next, hence the term "fully connected"
+
+    input_size = number of input neurons
+    output_size = number of output neurons
+    """
+
     def __init__(self, input_size, output_size, weight, bias):
         super().__init__()
 
@@ -34,7 +39,6 @@ class FCLayer(Layer):
         return self.output
 
     def backward_propagation(self, output_error, learning_rate):
-        # print("neuron layer")
         # print(f"output_error: {output_error} weights.T: {self.weights.T}")
         input_error = np.dot(output_error, self.weights.T)
         weights_error = np.dot(self.input.T, output_error)
@@ -45,6 +49,6 @@ class FCLayer(Layer):
         self.weights -= learning_rate * weights_error
         self.bias -= learning_rate * output_error
 
-        print(f"self.weights: {self.weights} self.bias: {self.bias}")
+        # print(f"self.weights: {self.weights} self.bias: {self.bias}")
 
         return input_error

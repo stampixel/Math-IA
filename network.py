@@ -1,4 +1,11 @@
 class Network:
+    """
+    Class which handles everything that has to do with the neural network
+
+    Used to define a neural network, used to add layers, ability to change activation function.
+    Ability to rerun the network and predict outcome of specific input.
+    Training the neural network itself
+    """
     def __init__(self):
         self.layers = []
         self.loss = None
@@ -27,7 +34,7 @@ class Network:
             result.append(output)
         return result
 
-    # trianing
+    # training
     def fit(self, x_train, y_train, epochs, learning_rate):
         samples = len(x_train)
 
@@ -39,8 +46,8 @@ class Network:
                 output = x_train[j]
                 for layer in self.layers:
                     output = layer.forward_propagation(output)
-                    print(f"output: {output}")
-                print("pass")
+                    # print(f"output: {output}")
+                # print("pass")
                 # compute loss
                 err += self.loss(y_train[j], output)
 

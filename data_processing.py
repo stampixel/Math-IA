@@ -1,4 +1,5 @@
-# Transforming qualitative data to quantitative data
+# Transforming qualitative data to quantitative data, original data exists inside of the data/cell_data.csv file
+# Processed data gets saved into data/data.csv file
 
 import pandas as pd
 

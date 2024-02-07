@@ -1,4 +1,4 @@
-# Base class
+# Parent classes for implementing layers into the neural network
 class Layer:
     def __init__(self):
         self.input = None
